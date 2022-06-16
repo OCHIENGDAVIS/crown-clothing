@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -6,6 +6,7 @@ import { HomePage } from './pages/homepage/homepage';
 import { ShopPage } from './pages/shop/shop';
 import SignUpIn from './pages/signin-signup/sigin-signup';
 import Header from './components/header/header';
+import ProtectedRoute from './components/protectedRoute/protected-route';
 import './App.css';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
@@ -34,10 +35,10 @@ class App extends React.Component {
     this.unsubscribeFromAuth();
   }
   render() {
-    console.log();
     return (
       <div className="App">
         <Header />
+
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
@@ -48,4 +49,10 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, { setCurrentUser })(App);
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user.currentUser,
+  };
+};
+
+export default connect(mapStateToProps, { setCurrentUser })(App);
