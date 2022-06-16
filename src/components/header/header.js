@@ -9,7 +9,6 @@ import CartIcon from '../cart-icon/cart-icon';
 import CartDropdown from '../cart-dropdown/cart-dropdown';
 
 const Header = ({ currentUser, hidden }) => {
-  console.log(hidden);
   console.log(currentUser);
   return (
     <div className="header">
@@ -35,7 +34,7 @@ const Header = ({ currentUser, hidden }) => {
         )}
         <CartIcon />
       </div>
-      {hidden ? <CartDropdown /> : null}
+      {hidden ? null : <CartDropdown />}
     </div>
   );
 };

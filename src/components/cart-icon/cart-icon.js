@@ -6,14 +6,22 @@ import './cart-icon.tyle.scss';
 import { ReactComponent as ShoppingCartIcon } from '../../assets/shopping-bag.svg';
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
 
-const CartIcon = ({ toggleCartHidden }) => {
+const CartIcon = ({ toggleCartHidden, ItemCount }) => {
   return (
     <div className="cart-icon" onClick={toggleCartHidden}>
-      <ShoppingCartIcon className="shopping-icon">
-        <span className="item-count">0</span>
-      </ShoppingCartIcon>
+      <ShoppingCartIcon className="shopping-icon"></ShoppingCartIcon>
+      <span className="item-count">{ItemCount}</span>
     </div>
   );
 };
 
-export default connect(null, { toggleCartHidden })(CartIcon);
+const mapStateToProps = ({ cart: { cartItems } }) => {
+  return {
+    ItemCount: cartItems.reduce(
+      (acculatedQuantity, cartItem) => acculatedQuantity + cartItem.quantity,
+      0
+    ),
+  };
+};
+
+export default connect(mapStateToProps, { toggleCartHidden })(CartIcon);

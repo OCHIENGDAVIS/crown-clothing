@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { HomePage } from './pages/homepage/homepage';
 import { ShopPage } from './pages/shop/shop';
+import CheckOut from './pages/checkout/checkout';
 import SignUpIn from './pages/signin-signup/sigin-signup';
 import Header from './components/header/header';
 import ProtectedRoute from './components/protectedRoute/protected-route';
@@ -43,6 +44,7 @@ class App extends React.Component {
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/signin" element={<SignUpIn />} />
+          <Route path="/checkout" element={<CheckOut />} />
         </Routes>
       </div>
     );
