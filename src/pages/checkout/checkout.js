@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import './checkout.style.scss';
 import CheckOutItem from '../../components/checkout-item/checkout-item';
+import StripeCheckoutButton from '../../components/stripe-button/stripe-buttton';
 
 const CheckOut = ({ cartItems }) => {
   let totals = 0;
@@ -36,6 +37,11 @@ const CheckOut = ({ cartItems }) => {
       <div className="total">
         <span>TOTAL: $ {totals}</span>
       </div>
+      <div className="test-warning">
+        *Use the fillowing test credit card number * <br />
+        4242 4242 4242 4242 - CVV 123
+      </div>
+      <StripeCheckoutButton price={totals} />
     </div>
   );
 };

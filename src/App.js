@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { HomePage } from './pages/homepage/homepage';
-import { ShopPage } from './pages/shop/shop';
+import ShopPage from './pages/shop/shop';
 import CheckOut from './pages/checkout/checkout';
 import SignUpIn from './pages/signin-signup/sigin-signup';
 import Header from './components/header/header';
